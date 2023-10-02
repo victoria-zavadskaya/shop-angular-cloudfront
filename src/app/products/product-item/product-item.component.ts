@@ -1,9 +1,10 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { Product } from '../product.interface';
-import { CartService } from '../../cart/cart.service';
 import { Observable } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
+
+import { CartService } from '../../cart/cart.service';
 import { CartCountControlsComponent } from '../../core/cart-count-controls/cart-count-controls.component';
+import { Product } from '../product.interface';
 
 @Component({
   selector: 'app-product-item',

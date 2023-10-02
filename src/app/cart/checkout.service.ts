@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CartService } from './cart.service';
-import { ProductsService } from '../products/products.service';
 import { Observable } from 'rxjs';
-import { ProductCheckout } from '../products/product.interface';
 import { map, switchMap } from 'rxjs/operators';
+
+import { CartService } from './cart.service';
+import { ProductCheckout } from '../products/product.interface';
+import { ProductsService } from '../products/products.service';
+
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +24,7 @@ export class CheckoutService {
             products.map((product) => ({
               ...product,
               orderedCount: cart[product.id],
-              totalPrice: +(cart[product.id] * product.price).toFixed(2),
+              totalPrice: Number((cart[product.id] * product.price).toFixed(2)),
             }))
           )
         )

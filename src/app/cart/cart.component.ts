@@ -1,11 +1,13 @@
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+
+import { CartService } from './cart.service';
 import { CheckoutService } from './checkout.service';
 import { ProductCheckout } from '../products/product.interface';
-import { Observable } from 'rxjs';
-import { CartService } from './cart.service';
-import { map, shareReplay } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-cart',
@@ -63,7 +65,7 @@ export class CartComponent implements OnInit {
     this.totalPrice$ = this.products$.pipe(
       map((products) => {
         const total = products.reduce((acc, val) => acc + val.totalPrice, 0);
-        return +total.toFixed(2);
+        return Number(total.toFixed(2));
       }),
       shareReplay({
         refCount: true,

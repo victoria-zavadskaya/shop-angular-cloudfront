@@ -1,8 +1,9 @@
-import { Injectable, Injector } from '@angular/core';
-import { ApiEndpoint, Config } from '../../environments/config.interface';
-import { CONFIG_TOKEN } from './injection-tokens/config.token';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { Injectable, Injector } from '@angular/core';
+
+import { CONFIG_TOKEN } from './injection-tokens/config.token';
+import { ApiEndpoint, Config } from '../../environments/config.interface';
 
 /** Base class for services working with APIs */
 @Injectable()
