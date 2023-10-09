@@ -1,7 +1,8 @@
 import { Injectable, Injector } from '@angular/core';
 import { EMPTY, Observable } from 'rxjs';
-import { ApiService } from '../../core/api.service';
 import { switchMap } from 'rxjs/operators';
+
+import { ApiService } from '../../core/api.service';
 
 @Injectable()
 export class ManageProductsService extends ApiService {

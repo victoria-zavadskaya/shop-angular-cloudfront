@@ -11,13 +11,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { BehaviorSubject, Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
 
+import { NotificationService } from '../../core/notification.service';
 import { Product } from '../../products/product.interface';
 import { ProductsService } from '../../products/products.service';
-import { NotificationService } from '../../core/notification.service';
 
 @Component({
   selector: 'app-edit-product',

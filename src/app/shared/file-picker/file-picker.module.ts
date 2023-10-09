@@ -1,7 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FilePickerComponent } from './file-picker.component';
+import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+
+import { FilePickerComponent } from './file-picker.component';
+
 
 @NgModule({
   declarations: [FilePickerComponent],
