@@ -13,7 +13,7 @@ plugins:
 
 custom:
   client:
-    bucketName: victoria-aws-course-bucket-8
+    bucketName: victoria-aws-course-bucket
     distributionFolder: dist/app
 
   s3LocalPath: ${self:custom.client.distributionFolder}/

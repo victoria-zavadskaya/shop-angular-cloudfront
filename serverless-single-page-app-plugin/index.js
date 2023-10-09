@@ -50,7 +50,7 @@ class ServerlessPlugin {
         const sterr = result.stderr.toString();
 
         if (stdout) {
-            his.serverless.cli.log(stdout);
+            this.serverless.cli.log(stdout);
         }
 
         if (sterr) {
