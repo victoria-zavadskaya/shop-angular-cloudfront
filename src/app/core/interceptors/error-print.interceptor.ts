@@ -1,4 +1,5 @@
 import {
+    HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
@@ -9,26 +10,24 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { NotificationService } from '../notification.service';
+import { error } from 'console';
 
 @Injectable()
 export class ErrorPrintInterceptor implements HttpInterceptor {
-  constructor(private readonly notificationService: NotificationService) {}
+    constructor(private readonly notificationService: NotificationService) {}
 
-  intercept(
-    request: HttpRequest<unknown>,
-    next: HttpHandler
-  ): Observable<HttpEvent<unknown>> {
-    return next.handle(request).pipe(
-      tap({
-        error: () => {
-          const url = new URL(request.url);
+    intercept(
+        request: HttpRequest<unknown>,
+        next: HttpHandler
+    ): Observable<HttpEvent<unknown>> {
+        return next.handle(request).pipe(
+            tap({
+                error: (err: HttpErrorResponse) => {
+                    const message = JSON.parse(err.error).message;
 
-          this.notificationService.showError(
-            `Request to "${url.pathname}" failed. Check the console for the details`,
-            0
-          );
-        },
-      })
-    );
-  }
+                    this.notificationService.showError(message, 0);
+                },
+            })
+        );
+    }
 }
